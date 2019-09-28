@@ -44,10 +44,3 @@ To create an environment, type: `conda create --name <environmentName>`
 
 ### **GitKraken signup below!**
 https://www.gitkraken.com/invite/gN1gNQGw
-
-## **Package/Library Installation**
------Pint (General install)-----\
-pip install pint
-
------Coolprop (General install)----- \
-pip install CoolProp
