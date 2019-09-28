@@ -1,3 +1,9 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+# Author: Emerson Vargas Niño
+# Date: July 2019
+
 import numpy as np
 from fluids.vectorized import *
 
