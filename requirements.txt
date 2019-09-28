@@ -1,0 +1,10 @@
+#
+####### requirements.txt #######
+#
+###### Requirements without Version Specifiers ######
+matplotlib
+CoolProp
+fluids
+scipy
+numpy
+#
