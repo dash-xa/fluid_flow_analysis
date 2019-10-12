@@ -1,7 +1,5 @@
 # **pipe_analysis**
 
-test
-
 ## **Installation**
 run the following: `pip install -r requirements.txt`
 
