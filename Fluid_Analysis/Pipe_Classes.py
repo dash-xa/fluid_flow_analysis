@@ -39,7 +39,7 @@ class Pipe_FlowPath: #define your flow path here
         self.deltaP                = dP_from_K(self.K, rho=fluid.density, V=pipe.velocity) # calculate total resulting pressure drop
 
 class Pipe_FlowPath_liquid_study1: #define your flow path here
-    def __init__(self, pipe, fluid, RG_1_cv):
+    def __init__(self, pipe, fluid, IS_1_cv, CV_1_cv, bend_angles):
 
         if fluid.dynamic_viscosity != 0:
             self.Re = Reynolds(V=pipe.velocity, D=pipe.diameter, rho=fluid.density, mu=fluid.dynamic_viscosity)
@@ -48,7 +48,16 @@ class Pipe_FlowPath_liquid_study1: #define your flow path here
             self.Re = Reynolds(V=pipe.velocity, D=pipe.diameter, nu=fluid.kinematic_viscosity)
 
         self.darcy_friction_factor = friction_factor(self.Re, eD =pipe.relative_roughness) # f
-        self.K                     = K_from_f(L=pipe.length, D=pipe.diameter, fd=self.darcy_friction_factor) # loss caused by fluid friction
-        self.K                    += Cv_to_K(RG_1_cv, D=pipe.diameter)
 
+        # K due to pipe
+        self.K                     = K_from_f(L=pipe.length, D=pipe.diameter, fd=self.darcy_friction_factor) # loss caused by fluid friction
+        
+        # K due to components
+        self.K                    += Cv_to_K(IS_1_cv, D=pipe.diameter) # Isolation Valve IS-1
+        self.K                    += Cv_to_K(CV_1_cv, D=pipe.diameter) # Check Valve CV-1
+        
+        # K due to bends
+        for a in bend_angles:
+            self.K                += bend_rounded(angle=a, Di=pipe.diameter, fd=self.darcy_friction_factor) # loss caused by bent pipe geometry
+        
         self.deltaP                = dP_from_K(self.K, rho=fluid.density, V=pipe.velocity) # calculate total resulting pressure drop
