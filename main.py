@@ -40,13 +40,20 @@ def main():
                         fluid            = nitrous)
 
     IS_1 = 1.4 # SS-43GS4 ball valve (series 43G), Cv found on page 7 of https://drive.google.com/open?id=1dudDV-ymrLOydcFpjhFKooxjz_vgMfvv
+    IS_1_D = 4.75/1000
+
     CV_1 = .67 # CH4 series check valve, Cv found on page 3 of https://drive.google.com/open?id=1nl7CwlfGZ0uxE3Dx-EOUgtRL-kqr0_Ph
+    CV_1_D = IS_1_D # not actually correct but cannot find the orifice size in the PDF
+
     angles = [90]*4
+
     # RUN ANALYSIS
     analysis_smooth = pc.Pipe_FlowPath_liquid_study1(pipe     = smooth_pipe,
                                        fluid    = nitrous,
                                        IS_1_cv  = IS_1,
+                                       IS_1_D  = IS_1_D,
                                        CV_1_cv  = CV_1,
+                                       CV_1_D  = CV_1_D,
                                        bend_angles = angles)
 
     # analysis_flex = pc.Pipe_FlowPath(pipe       = flex_pipe,
