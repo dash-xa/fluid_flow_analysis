@@ -39,17 +39,23 @@ def main():
                         material         = 'flex',
                         fluid            = nitrous)
 
+    IS_1 = 1.4
+    CV_1 = .67
+    angles = [90]*4
     # RUN ANALYSIS
-    analysis_smooth = pc.Pipe_FlowPath(pipe     = smooth_pipe,
-                                       fluid    = nitrous)
+    analysis_smooth = pc.Pipe_FlowPath_liquid_study1(pipe     = smooth_pipe,
+                                       fluid    = nitrous,
+                                       IS_1_cv  = IS_1,
+                                       CV_1_cv  = CV_1,
+                                       bend_angles = angles)
 
-    analysis_flex = pc.Pipe_FlowPath(pipe       = flex_pipe,
-                                     fluid      = nitrous)
+    # analysis_flex = pc.Pipe_FlowPath(pipe       = flex_pipe,
+    #                                  fluid      = nitrous)
 
     # RUN PLOTS
     fig, ax = plt.subplots()
     ax.plot(smooth_pipe.diameter/inch, analysis_smooth.deltaP/psi, 'k--', label='Smooth Pipe')
-    ax.plot(flex_pipe.diameter/inch, analysis_flex.deltaP/psi, 'k-', label='Flex Pipe')
+    # ax.plot(flex_pipe.diameter/inch, analysis_flex.deltaP/psi, 'k-', label='Flex Pipe')
     ax.set_xlabel('Diameter (inch)')
     ax.set_ylabel('Pressure Drop (psi)')
     ax.set_title('Pressure drop for differing pipe diameters')
