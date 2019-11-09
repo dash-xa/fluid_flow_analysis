@@ -44,3 +44,35 @@ To create an environment, type: `conda create --name <environmentName>`
 
 ### **GitKraken signup below!**
 https://www.gitkraken.com/invite/gN1gNQGw
+
+
+
+## **Package/Library Installation**
+- Pint \
+-----Pint (General install)-----\
+pip install pint\
+-----Pint (Anaconda)-----\
+conda install -c conda-forge pint\
+> You can check the installation with the following command:\
+> pint.test()
+
+- CoolProp \
+-----Coolprop (General install)----- \
+pip install cmake\
+pip install Cython\
+pip install CoolProp\
+-----Coolprop (Anaconda)-----\
+conda install pip six\
+pip install cmake\
+pip install -i https://pypi.anaconda.org/coolprop/simple coolprop\
+pip install -i https://pypi.anaconda.org/coolprop/label/dev/simple coolprop\
+OR\
+conda install -c conda-forge coolprop \
+pip install cmake\
+conda install -c conda-forge/label/gcc7 coolprop \
+conda install -c conda-forge/label/cf201901 coolprop
+
+- SUAVE \
+git clone https://github.com/suavecode/SUAVE.git \
+cd SUAVE/trunk \
+python setup.py install
