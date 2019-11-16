@@ -16,13 +16,15 @@ class Fluid_Definition:
         self.dynamic_viscosity      = dynamic_viscosity # mu, Dynamic viscosity, Pa*s
         self.kinematic_viscosity    = kinematic_viscosity  # nu, Kinematic viscosity, m^2/s
 
-        if kinematic_viscosity == 0 and dynamic_viscosity == 0:
-            if mass_fraction == 0:
-                self.dynamic_viscosity = self.dynamicViscosity_saturatedLiquid_N2O(self.T)
-            elif mass_fraction == 1:
-                self.dynamic_viscosity = self.dynamicViscosity_saturatedVapour_N2O(self.T)
-            else:
-                'Not implemented yet'
+        self.dynamic_viscosity      = PropsSI('VISCOSITY', 'P', pressure, 'Q', mass_fraction, fluid) # mu, Dynamic viscosity, Pa*s
+
+        # if kinematic_viscosity == 0 and dynamic_viscosity == 0:
+        #     if mass_fraction == 0:
+        #         self.dynamic_viscosity = self.dynamicViscosity_saturatedLiquid_N2O(self.T)
+        #     elif mass_fraction == 1:
+        #         self.dynamic_viscosity = self.dynamicViscosity_saturatedVapour_N2O(self.T)
+        #     else:
+        #         'Not implemented yet'
 
     # Kinematic Viscosity, or Dynamic Viscosity and density
     # nu, or mu and rho

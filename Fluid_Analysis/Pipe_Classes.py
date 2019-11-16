@@ -60,4 +60,8 @@ class Pipe_FlowPath_liquid_study1: #define your flow path here
         for a in bend_angles:
             self.K                += bend_rounded(angle=a, Di=pipe.diameter, fd=self.darcy_friction_factor) # loss caused by bent pipe geometry
 
+        print("K:", type(self.K), "\nrho: ", type(fluid.density), "\nV:", type(pipe.velocity))
+
         self.deltaP                = dP_from_K(self.K, rho=fluid.density, V=pipe.velocity) # calculate total resulting pressure drop
+
+        print("deltaP: ", type(self.deltaP))
