@@ -71,7 +71,6 @@ def main():
     fig, ax = plt.subplots()
     ax.plot(smooth_pipe.diameter/inch, analysis_smooth.deltaP/psi, 'k-', label='Smooth Pipe')
     #ax.plot(smooth_pipe.diameter/inch, analysis_smooth_og.deltaP/psi, 'k--', label='og Smooth Pipe')    
-    ax.axvline(.25)
     ax.set_xlabel('Diameter (inch)')
     ax.set_ylabel('Pressure Drop (psi)')
     ax.set_title('Pressure drop for differing pipe diameters')
