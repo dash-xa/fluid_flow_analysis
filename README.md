@@ -1,5 +1,5 @@
 # **pipe_analysis**
-![Sample analysis of pressure drops](sample-analysis.png)
+![Sample analysis of pressure drops](sample_analysis.png)
 ## **Installation**
 run the following: `pip install -r requirements.txt`
 
